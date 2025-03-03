@@ -35,6 +35,10 @@ std::string parsing_printer::print_action(operations_st op)
     {
         action = "Shift";
     }
+    if (op.op == ACCEPT)
+    {
+        action = "Accept";
+    }
 
     return action;
 }
