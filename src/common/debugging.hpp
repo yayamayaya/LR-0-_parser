@@ -5,7 +5,11 @@
 
 using ret_status = int;
 
-#define LOG(arg) std::cout << arg
+#ifdef DEBUG
+    #define LOG(arg) std::cout << arg       
+#else
+    #define LOG(arg)
+#endif
 
 #define _RETURN_ON_TRUE(statement, ret_val, ...)            \
     do                                                      \
