@@ -24,13 +24,13 @@ union token_data
 
     token_data(number_t num):    number(num) {};
 
-    token_data(Operations op): operation(op) {}; 
+    token_data(Syntax_names op): operation(op) {}; 
 
     ~token_data() {};
 
     number_t number;
 
-    Operations operation;
+    Syntax_names operation;
 };
 
 struct token_t
@@ -52,12 +52,15 @@ private:
 
     inline token_t detect_token(const std::string &buff, unsigned int &pos);
 
-    std::unordered_map<char, Operations> operations =
+    std::unordered_map<char, Syntax_names> operations =
     {
         {'+', PLUS},
         {'-', MINUS},
         {'*', UMNOZH},
-        {'/', DELIT}
+        {'/', DELIT},
+
+        {'(', OP_BRACK},
+        {')', CL_BRACK}
     };
 
     class tokens_arr

@@ -58,7 +58,7 @@ inline token_t tokenizator::detect_token(const std::string &buff, unsigned int &
         return token;
     }
 
-    std::unordered_map<char, Operations>::const_iterator iter = operations.find(*(buff.data() + pos));
+    std::unordered_map<char, Syntax_names>::const_iterator iter = operations.find(*(buff.data() + pos));
     if (iter != operations.end())
     {
         LOG("> operation: '" << (unsigned int)iter->second << "' found\n");
