@@ -19,10 +19,12 @@ target_include_directories(
 	./common/
 	./parsing_table/
 	./tokenizator/
+	./parsing_print
 )
 
 target_link_libraries(
     parser
 	parsing_table
+	parsing_print
 	tokenizator
 )

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 
 project(parser)
 
-add_definitions(-DDEBUG)
+#add_definitions(-DDEBUG)
 
 add_definitions(
     -D _DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ -Waggressive-loop-optimizations -Wc++14-compat
@@ -23,8 +23,4 @@ include_directories(
 )
 
 add_subdirectory(src)
-
-add_executable(init_test test.cpp)
-
-target_link_libraries(init_test parser)
-#add_subdirectory(tests)
+add_subdirectory(tests)
