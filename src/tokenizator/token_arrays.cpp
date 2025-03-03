@@ -10,7 +10,7 @@ token_t *tokenizator::tokens_arr::return_data()
     std::copy(tokens, tokens + token_num, returning_data);
 
     token_t last_token = {};
-    last_token.data = END;
+    last_token.data = EXPR_END;
     last_token.type = OPERATION;
 
     *(returning_data + token_num) = last_token;
