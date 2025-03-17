@@ -16,6 +16,12 @@ using reduce_output = std::unordered_map<closure_state, std::string>;
 class parsing_printer
 {
 private:
+
+    const size_t INDENT_FIVE = 5;
+    const size_t INDENT_TEN  = 10;
+    const size_t INDENT_FIFT = 15;
+    const size_t INDENT_TWEN = 20;
+
     static inline output_table syntax_output =
     {
         {ID,       "id" },

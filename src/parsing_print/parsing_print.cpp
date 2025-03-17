@@ -6,9 +6,9 @@ using std::setw;
 
 parsing_printer::parsing_printer()
 {
-    std::cout << setw(15) << "STACK" << setw(10) << "|" \
-        << setw(15) << "INPUT" << setw(10) << "|" \
-            << setw(15) <<  "ACTION" << std::endl;
+    std::cout << setw(INDENT_FIFT) << "STACK" << setw(INDENT_TEN) << "|" \
+        << setw(INDENT_FIFT) << "INPUT" << setw(INDENT_TEN) << "|" \
+            << setw(INDENT_FIFT) <<  "ACTION" << std::endl;
 }
 
 void parsing_printer::print_to_table(const std::stack<Syntax_names> &st, const token_t *tokens, operations_st op)
@@ -16,9 +16,9 @@ void parsing_printer::print_to_table(const std::stack<Syntax_names> &st, const t
     //For accurate table
     std::string stack_str   = print_stack(st);
 
-    std::cout << setw(5) << "" << stack_str << setw((int)(20 - stack_str.length())) << "|" \
-        << setw(20) << print_input(tokens) << setw(5) << "|" \
-            << setw(5) << "" << print_action(op) << std::endl;
+    std::cout << setw(INDENT_FIVE) << "" << stack_str << setw((int)(INDENT_TWEN - stack_str.length())) << "|" \
+        << setw(INDENT_TWEN) << print_input(tokens) << setw(INDENT_FIVE) << "|" \
+            << setw(INDENT_FIVE) << "" << print_action(op) << std::endl;
 }
 
 std::string parsing_printer::print_action(operations_st op)
@@ -31,14 +31,13 @@ std::string parsing_printer::print_action(operations_st op)
         if (iter != reduce_print.end())
             action = "Reduce " + iter->second;
     }
+
     if (op.op == SHIFT)
-    {
         action = "Shift";
-    }
     if (op.op == ACCEPT)
-    {
         action = "Accept";
-    }
+    if (op.op == ERROR)
+        action = "Error";
 
     return action;
 }
@@ -72,7 +71,14 @@ std::string parsing_printer::print_input(const token_t *tokens)
     std::stringstream input_str = {};
 
     if (tokens->type == NUMBER)
-        input_str << std::setprecision(2) << tokens->data.number;
+    {
+        int precision = 0;
+
+        if (tokens->data.number != static_cast<int>(tokens->data.number))
+            precision = 2;
+        
+        input_str << std::setprecision(precision) << std::fixed << tokens->data.number;
+    }
     if (tokens->type == OPERATION)
     {
         output_table::iterator iter = syntax_output.find(tokens->data.operation);
