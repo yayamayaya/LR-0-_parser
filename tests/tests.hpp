@@ -14,7 +14,7 @@ TEST(test_name, test_namw)                                                      
     EXPECT_EQ(status, expected_ret_val);                                            \
 }
 
-_TEST(empty_string_test, "", 1201);
+_TEST(empty_string_test, "", parser::EMPTY_STRING);
 
 _TEST(number_test, "3", 0);
 
@@ -32,8 +32,10 @@ _TEST(another_test, "(5 - 1 * 6) + (15 / 12)", 0);
 
 _TEST(double_test, "5.63+ 1.25", 0);
 
-_TEST(missing_number_test, "(5 - 1+3) * -1", 801);
+_TEST(missing_number_test, "(5 - 1+3) * -1", parser::PARSER_ERROR);
 
-_TEST(missing_bracket_test, "((5 + 1) * 2 + 5  * (3 - 1)", 801);
+_TEST(missing_bracket_test, "((5 + 1) * 2 + 5  * (3 - 1)", parser::PARSER_ERROR);
+
+_TEST(wrong_token_test, "f-1", tokenizator::LEXER_ERR);
 
 #endif
