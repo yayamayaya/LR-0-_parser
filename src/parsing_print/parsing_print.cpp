@@ -11,7 +11,7 @@ parsing_printer::parsing_printer()
             << setw(INDENT_FIFT) <<  "ACTION" << std::endl;
 }
 
-void parsing_printer::print_to_table(const std::stack<Syntax_names> &st, const token_t *tokens, operations_st op)
+void parsing_printer::print_to_table(const std::stack<Syntax_names> &st, const tokenizator::token_t *tokens, operations_st op)
 {
     //For accurate table
     std::string stack_str   = print_stack(st);
@@ -61,7 +61,7 @@ std::string parsing_printer::print_stack(std::stack<Syntax_names> st)
     return stack_str.str();
 }
 
-std::string parsing_printer::print_input(const token_t *tokens)
+std::string parsing_printer::print_input(const tokenizator::token_t *tokens)
 {
     assert(tokens);
 

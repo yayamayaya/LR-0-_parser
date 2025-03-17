@@ -21,18 +21,13 @@ public:
 
     ret_status parse_expression(std::string expr); 
 
-    parser(): tokenization(), tkns(nullptr), pos(0), parser_status(), states(), parsed_expression() {};
+    parser(): tkns(), pos(0), parser_status(), states(), parsed_expression() {};
     
-    ~parser() 
-    {
-        delete [] tkns;
-    };
+    ~parser() {};
 
 private:
 
-    tokenizator tokenization;
-
-    token_t *tkns;
+    std::vector<tokenizator::token_t> tkns;
 
     unsigned int pos;
 

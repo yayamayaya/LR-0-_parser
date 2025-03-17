@@ -8,8 +8,10 @@ ret_status parser::parse_expression(std::string expr)
 {
     _RETURN_ON_TRUE (expr.empty(), EMPTY_STRING, LOG("> the string you entered is empty\n"));
 
-    parser_status = tokenization.run(tkns, expr);
+    parser_status = tokenizator::run(tkns, expr);
     _RETURN_ON_TRUE(parser_status, parser_status,);
+
+    tokenizator::token_dump(tkns);
 
     LOG("> starting parsing:\n");
     
@@ -23,10 +25,10 @@ ret_status parser::parse_expression(std::string expr)
         if (parser_status)
             return parser_status;
         
-        parsing_print.print_to_table(parsed_expression, tkns + pos, op);
+        parsing_print.print_to_table(parsed_expression, tkns.data(), op);
 
         if      (op.op == ERROR)
-            parser_status = (int)op.num;
+            parser_status = PARSER_ERROR;
         else if (op.op == SHIFT)
             shift_operation(curr_tok, op.num);
         else if (op.op == REDUCE)

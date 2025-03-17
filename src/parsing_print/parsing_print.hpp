@@ -51,7 +51,7 @@ private:
     
     std::string print_stack(std::stack<Syntax_names> st);
 
-    std::string print_input(const token_t *tokens);
+    std::string print_input(const tokenizator::token_t *tokens);
 
     std::string print_action(operations_st op);
 
@@ -59,7 +59,7 @@ public:
 
     parsing_printer();
 
-    void print_to_table(const std::stack<Syntax_names> &st, const token_t *tokens, operations_st op);
+    void print_to_table(const std::stack<Syntax_names> &st, const tokenizator::token_t *tokens, operations_st op);
 };
 
 

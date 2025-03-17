@@ -50,10 +50,7 @@ public:
 
     parse_table();
     
-    enum Error
-    {
-        SYNTAX_ERROR = 801
-    };
+    static inline const size_t SYNTAX_ERROR = 801;
 
 private:
     
