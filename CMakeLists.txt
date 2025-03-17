@@ -8,8 +8,8 @@ add_definitions(
     -D _DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Wpedantic -Werror
 )
 
-option(COMPILE_TESTS  "Test compiling"   OFF)
-option(COMPILE_DRIVER "Driver compiling" OFF)
+option(COMPILE_TESTS  "Test compiling"   ON)
+option(COMPILE_DRIVER "Driver compiling" ON)
 
 if (COMPILE_TESTS)
     find_package(GTest REQUIRED)
