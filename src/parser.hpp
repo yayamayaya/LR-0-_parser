@@ -8,16 +8,16 @@
 #include "tokenizator.hpp"
 #include "parsing_print.hpp"
 
-enum Parser_errors
-{
-    EMPTY_STRING = 1201,
-    PARSER_ERROR = 1202,
-    GOTO_ASS_ERR = 1203,
-};
-
-class parser: private parse_table, public parsing_printer
+class parser
 {
 public:
+
+    enum Parser_errors
+    {
+        EMPTY_STRING = 1201,
+        PARSER_ERROR = 1202,
+        GOTO_ASS_ERR = 1203,
+    };
 
     ret_status parse_expression(std::string expr); 
 
@@ -42,6 +42,10 @@ private:
 
     std::stack<Syntax_names>  parsed_expression;
 
+    parse_table     parsing_table;
+
+    parsing_printer parsing_print;
+
     operations_st find_in_the_table(const Syntax_names &curr_syntax);
 
     void shift_operation(Syntax_names curr_tok, closure_state new_closure);
@@ -52,9 +56,9 @@ private:
 
     Syntax_names check_token();
 
-    const parser &operator=(const parser &cp) {(void) cp; return *this;}
+    const parser &operator=(const parser &cp) =delete;
 
-    parser(const parser &cp): tokenization(), tkns(nullptr), pos(0), parser_status(), states(), parsed_expression() {(void) cp;}
+    parser(const parser &cp) =delete;
 };
 
 #endif

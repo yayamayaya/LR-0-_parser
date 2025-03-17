@@ -3,12 +3,13 @@
 #include <assert.h>
 #include <string>
 
+
 ret_status parser::parse_expression(std::string expr)
 {
     _RETURN_ON_TRUE (expr.empty(), EMPTY_STRING, LOG("> the string you entered is empty\n"));
 
     parser_status = tokenization.run(tkns, expr);
-    _RETURN_ON_TRUE(parser_status, parser_status);
+    _RETURN_ON_TRUE(parser_status, parser_status,);
 
     LOG("> starting parsing:\n");
     
@@ -19,10 +20,10 @@ ret_status parser::parse_expression(std::string expr)
         Syntax_names curr_tok = check_token();
         operations_st op = find_in_the_table(curr_tok);
 
-        print_to_table(parsed_expression, tkns + pos, op);
-
         if (parser_status)
             return parser_status;
+        
+        parsing_print.print_to_table(parsed_expression, tkns + pos, op);
 
         if      (op.op == ERROR)
             parser_status = (int)op.num;
@@ -41,8 +42,8 @@ ret_status parser::parse_expression(std::string expr)
 
 operations_st parser::find_in_the_table(const Syntax_names &curr_syntax)
 {
-    table_t::const_iterator first_iter = parsing_table.find(states.top());
-    if (first_iter == parsing_table.end())
+    table_t::const_iterator first_iter = parsing_table.parsing_table.find(states.top());
+    if (first_iter ==  parsing_table.parsing_table.end())
         return {ERROR, 101};
     
     Syntax_names syntax_mask = curr_syntax;
