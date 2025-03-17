@@ -66,13 +66,17 @@ private:
     class tokens_arr
     {
     public:
-
+        
         tokens_arr(): tokens(new token_t[init_size]), array_size(init_size), token_num(0) {};
         
         ~tokens_arr () 
         {
             delete [] tokens;
         };
+        
+        tokens_arr(const tokens_arr& copy) =delete;
+        
+        tokens_arr& operator=(const tokens_arr& copy) = delete;
         
         ret_status      add_token(const token_t token);
         
@@ -82,7 +86,7 @@ private:
         
         void            token_dump();
         
-        private:
+    private:
         
         static constexpr long int init_size = 100;
         
@@ -103,17 +107,7 @@ private:
             tokens = arr_holder;
             return 0;
         }
-        
-        tokens_arr(const tokens_arr& copy): tokens(NULL), array_size(0), token_num(0) {(void) copy;};
-        
-        tokens_arr& operator=(const tokens_arr& copy)
-        {
-            (void) copy;
-            
-            return *this;
-        }
     };
-
 };  
 
 #endif

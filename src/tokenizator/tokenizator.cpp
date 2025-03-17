@@ -28,7 +28,7 @@ ret_status tokenizator::run(token_t *&token_arr, const std::string expression)
 
         if (token.type != SPACE_SYMB)
         {
-            _RETURN_ON_TRUE(tokens.add_token(token), MEM_RLC_ERR);
+            _RETURN_ON_TRUE(tokens.add_token(token), MEM_RLC_ERR,);
 
             continue;
         }
