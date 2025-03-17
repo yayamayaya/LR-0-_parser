@@ -16,6 +16,7 @@ F  -> ID        (6)
 
 using ret_status = int;
 
+using number_t = double;
 
 enum Syntax_names
 {
