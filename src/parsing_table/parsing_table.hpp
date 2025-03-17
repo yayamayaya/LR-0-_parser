@@ -4,7 +4,6 @@
 #include <unordered_map>
 #include "syntax.hpp"
 
-
 #define _TDATA(row, column) parsing_table[row][column]
 
 #define I ,
@@ -36,9 +35,7 @@ enum Parser_operations
 using closure_state = unsigned int;
 
 struct operations_st
-{
-    //operations_st(Parser_operations oper, closure_state number): op(oper), num(number) {};
-    
+{    
     Parser_operations   op;
     closure_state       num;
 };
@@ -53,6 +50,11 @@ public:
 
     parse_table();
     
+    enum Error
+    {
+        SYNTAX_ERROR = 801
+    };
+
 private:
     
     static inline table_t parsing_table;
