@@ -1,12 +1,10 @@
-#ifndef TESTS_H
-#define TESTS_H
+//#include "tests.hpp"
 
 #include <gtest/gtest.h>
 #include "parser.hpp"
 
-
 #define _TEST(test_name, expr, expected_ret_val)                                    \
-TEST(test_name, test_namw)                                                          \
+TEST(test_name, test_name)                                                          \
 {                                                                                   \
     parser p = {};                                                                  \
     ret_status status = p.parse_expression(expr);                                   \
@@ -36,4 +34,9 @@ _TEST(missing_number_test, "(5 - 1+3) * -1", 801);
 
 _TEST(missing_bracket_test, "((5 + 1) * 2 + 5  * (3 - 1)", 801);
 
-#endif
+int main()
+{
+    testing::InitGoogleTest();
+
+    return RUN_ALL_TESTS();
+}
