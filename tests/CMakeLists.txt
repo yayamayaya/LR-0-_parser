@@ -1,18 +1,15 @@
 
 project(tests)
 
-file (GLOB HDR ./include/*.hpp)
-file (GLOB SRC ./*.cpp)
 
-add_executable(tests ${HDR} ${SRC})
+add_executable(tests tests.cpp)
 
-target_link_libraries(
-    tests
-    parser
-)
+target_link_libraries(tests parser)
+
+target_link_libraries(tests ${GTEST_LIBRARIES} pthread)
 
 target_include_directories(
     tests
     PRIVATE
-    ./include/
+    ./../src/
 )

@@ -4,8 +4,4 @@ file (GLOB SRC ./*.cpp)
 
 add_library(parsing_table ${HDR} ${SRC})
 
-target_include_directories(
-    parsing_table
-    PRIVATE
-    ./../common/
-)
+target_link_libraries(parsing_table common)
