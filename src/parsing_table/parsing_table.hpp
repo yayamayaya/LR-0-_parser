@@ -2,6 +2,7 @@
 #define PARSING_TABLE_H
 
 #include <unordered_map>
+#include <cstddef>
 #include "syntax.hpp"
 
 #define _TDATA(row, column) parsing_table[row][column]
