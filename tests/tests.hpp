@@ -36,6 +36,8 @@ _TEST(missing_number_test, "(5 - 1+3) * -1", parser::PARSER_ERROR);
 
 _TEST(missing_bracket_test, "((5 + 1) * 2 + 5  * (3 - 1)", parser::PARSER_ERROR);
 
-_TEST(wrong_token_test, "f-1", tokenizator::LEXER_ERR);
+_TEST(variable_test, "x0 - 1 * 2", 0);
+
+_TEST(mult_var_test, "x0 - x1 + y2", 0);
 
 #endif
