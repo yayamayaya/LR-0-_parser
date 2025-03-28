@@ -16,6 +16,7 @@
 ")"                { return CL_BRACK; }
 [0-9]+"."[0-9]*    { return ID; }
 [0-9]+             { return ID; }
+[A-Za-z]+[A-Za-z0-9]* { return VAR; }
 [ \t\n]             
 .                  {LOG("> Error: unknown symbol " << yytext[0] << std::endl); return tokenizator::LEXER_ERR;}
 
@@ -48,6 +49,17 @@ ret_status tokenizator::run(std::vector<token_t> &tokens, const std::string expr
                 tokens.push_back(token);
 				break;
 			}
+
+            case VAR:
+            {
+                LOG("> VAR ' <" << yytext << "> was found\n");
+
+                token.var_name      = yytext;
+                token.type          = VAR;
+
+                tokens.push_back(token);
+                break;
+            }
 
             case ID: 
             {
