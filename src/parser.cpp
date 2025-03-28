@@ -24,7 +24,7 @@ ret_status parser::parse_expression(std::string expr)
         if (parser_status)
             return parser_status;
         
-        parsing_print.print_to_table(parsed_expression, tkns.data(), op);
+        parsing_print.print_to_table(parsed_expression, tkns.data() + pos, op);
 
         if      (op.op == ERROR)
             parser_status = PARSER_ERROR;
