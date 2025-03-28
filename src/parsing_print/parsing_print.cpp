@@ -79,6 +79,12 @@ std::string parsing_printer::print_input(const tokenizator::token_t *tokens)
         
         input_str << std::setprecision(precision) << std::fixed << tokens->data.number;
     }
+
+    if (tokens->type == VAR)
+    {
+        input_str << tokens->var_name;
+    }
+
     if (tokens->type == OPERATION)
     {
         output_table::iterator iter = syntax_output.find(tokens->data.operation);

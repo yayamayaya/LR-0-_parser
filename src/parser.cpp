@@ -3,7 +3,6 @@
 #include <assert.h>
 #include <string>
 
-
 ret_status parser::parse_expression(std::string expr)
 {
     _RETURN_ON_TRUE (expr.empty(), EMPTY_STRING, LOG("> the string you entered is empty\n"));
@@ -152,7 +151,7 @@ void parser::reduce_operation(closure_state reduce_number)
 
 Syntax_names parser::check_token()
 {
-    if (tkns[pos].type == NUMBER)
+    if (tkns[pos].type == NUMBER || tkns[pos].type == VAR)
         return ID;
 
     assert(tkns[pos].type == OPERATION);

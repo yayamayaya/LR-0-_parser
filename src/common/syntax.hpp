@@ -44,6 +44,7 @@ enum Data_types
 {
     NUMBER          = 0x51,
     OPERATION       = 0x52,
+    VAR             = 0x53,
 
     SPACE_SYMB      = 0x53,
     SYNTAX_NOT_DET  = 0x54,
