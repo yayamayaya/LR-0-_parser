@@ -33,6 +33,9 @@ namespace tokenizator
         ~token_t() {};
         
         token_data data;
+
+        std::string var_name;
+
         Data_types type;
     };
 
