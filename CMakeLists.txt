@@ -2,7 +2,10 @@ cmake_minimum_required(VERSION 3.11)
 
 project(parser)
 
+execute_process(COMMAND flex -o src/tokenizator/tokenizator.cpp src/tokenizator/tokenizator.l)
+
 #add_definitions(-DDEBUG)
+
 
 add_definitions(
     -D _DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Wpedantic -Werror
